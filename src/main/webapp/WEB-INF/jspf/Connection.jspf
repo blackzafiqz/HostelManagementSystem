@@ -1,0 +1,5 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<sql:setDataSource var = "db" driver = "com.mysql.cj.jdbc.Driver"
+                   url = "jdbc:mysql://localhost/hostel?useSSL=false"
+                   user = "root"  password = "Afniaziq99!"/>
