@@ -26,7 +26,7 @@
                 <div class="collapse" id="student-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                         <li><a href="/Staff/ListStudent.jsp" class="link-dark d-inline-flex text-decoration-none rounded">List</a></li>
-                        <li><a href="/Staff/RegisterRoom.jsp" class="link-dark d-inline-flex text-decoration-none rounded">Register</a></li>
+                        
                         <li><a href="/Staff/InformationStudent.jsp" class="link-dark d-inline-flex text-decoration-none rounded">Information</a></li>
                     </ul>
                 </div>
@@ -37,8 +37,8 @@
                 </button>
                 <div class="collapse" id="leave-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="/Student/ApplyLeave.jsp" class="link-dark d-inline-flex text-decoration-none rounded">Apply</a></li>
-                        <li><a href="/Student/HistoryLeave.jsp" class="link-dark d-inline-flex text-decoration-none rounded">History</a></li>
+                        <li><a href="/Staff/ListLeave.jsp" class="link-dark d-inline-flex text-decoration-none rounded">List</a></li>
+                        <li><a href="/Staff/InformationLeave.jsp" class="link-dark d-inline-flex text-decoration-none rounded">Information</a></li>
                     </ul>
                 </div>
             </li>
@@ -50,7 +50,7 @@
                 </button>
                 <div class="collapse" id="account-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="/Student/Settings.jsp" class="link-dark d-inline-flex text-decoration-none rounded">Settings</a></li>
+                        <li><a href="/Staff/Settings.jsp" class="link-dark d-inline-flex text-decoration-none rounded">Settings</a></li>
                         <li><a href="/LoginServlet" class="link-dark d-inline-flex text-decoration-none rounded">Sign out</a></li>
                     </ul>
                 </div>

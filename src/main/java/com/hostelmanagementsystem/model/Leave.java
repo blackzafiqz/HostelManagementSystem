@@ -57,4 +57,12 @@ public class Leave implements java.io.Serializable {
     private String approval;
     private Date dateOut;
     private Date dateIn;
+    private int occupyId;
+	public int getOccupyId() {
+		return occupyId;
+	}
+
+	public void setOccupyId(int occupyId) {
+		this.occupyId = occupyId;
+	}
 }

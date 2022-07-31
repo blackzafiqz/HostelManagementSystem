@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.hotelmanagementsystem.util;
+package com.hostelmanagementsystem.util;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -31,7 +31,7 @@ public class DBConnection {
         }
         
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/hostel?useSSL=false","root","Afniaziq99!");
+            conn = DriverManager.getConnection("jdbc:mysql://blackzafiqz.com/hostel?useSSL=false","outsider","nopassword");
             System.out.println("Printing Connection Object " + conn);
         } catch (SQLException ex) {
             // handle any errors

@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.hotelmanagementsystem.dao;
+package com.hostelmanagementsystem.dao;
 
 import com.hostelmanagementsystem.model.Room;
-import com.hotelmanagementsystem.util.DBConnection;
+import com.hostelmanagementsystem.util.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -60,14 +60,14 @@ public class RoomDAO {
                 room.setNumber(rs.getInt("number"));
                 room.setLevel(rs.getInt("level"));
                 rooms.add(room);
-                return rooms;
             }
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
         }
-        return null;
+
+        return rooms;
     }
 
     public Room Read(int ID) {

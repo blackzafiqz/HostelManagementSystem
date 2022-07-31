@@ -7,11 +7,11 @@
 <%@page import="java.util.GregorianCalendar"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.sql.Date"%>
-<%@page import="com.hotelmanagementsystem.dao.OccupyDAO"%>
+<%@page import="com.hostelmanagementsystem.dao.OccupyDAO"%>
 <%@page import="com.hostelmanagementsystem.model.Occupy"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.hostelmanagementsystem.model.Room"%>
-<%@page import="com.hotelmanagementsystem.dao.RoomDAO"%>
+<%@page import="com.hostelmanagementsystem.dao.RoomDAO"%>
 <%@page import="com.hostelmanagementsystem.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%

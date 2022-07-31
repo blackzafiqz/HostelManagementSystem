@@ -3,7 +3,7 @@
     Created on : 22 Jul 2022, 3:49:59 pm
     Author     : black
 --%>
-<%@page import="com.hotelmanagementsystem.dao.RoomDAO"%>
+<%@page import="com.hostelmanagementsystem.dao.RoomDAO"%>
 <%@page import="com.hostelmanagementsystem.model.Room"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.hostelmanagementsystem.model.User"%>

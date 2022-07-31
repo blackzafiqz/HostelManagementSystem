@@ -52,6 +52,7 @@
                     <%
                         int total = Integer.parseInt(pageContext.getAttribute("total").toString());
                         int maxPage = (int) Math.ceil((double) total / 10);
+                        
                     %>
                     <sql:query startRow="<%= 0 + ((pg - 1) * 10)%>"  maxRows="10" dataSource = "${db}" var = "result">
                         SELECT *  FROM `LEAVE`,OCCUPY
@@ -107,13 +108,13 @@
                                         "currentPage", pg);
                             %>
                             <li class="page-item <%= pg == 1 ? "disabled" : ""%>">
-                                <a class="page-link" href="/Student/ListRoom.jsp?page=<c:out value="${currentPage-1}"/>">Previous</a>
+                                <a class="page-link" href="/Student/HistoryLeave.jsp?page=<c:out value="${currentPage-1}"/>">Previous</a>
                             </li>
                             <c:forEach var="pg" items="${pages}">
-                                <li class="page-item <c:if test="${currentPage==pg}"><c:out value = "disabled"/></c:if>"><a class="page-link" href="/Student/ListRoom.jsp?page=<c:out value="${pg}"/>"><c:out value="${pg}"/></a></li>
+                                <li class="page-item <c:if test="${currentPage==pg}"><c:out value = "disabled"/></c:if>"><a class="page-link" href="/Student/HistoryLeave.jsp?page=<c:out value="${pg}"/>"><c:out value="${pg}"/></a></li>
                                 </c:forEach>
-                            <li class="page-item <%= pg == maxPage ? "disabled" : ""%>">
-                                <a class="page-link" href="/Student/ListRoom.jsp?page=<c:out value="${currentPage+1}"/>">Next</a>
+                            <li class="page-item <%= pg == maxPage || maxPage==0 ? "disabled" : ""%>">
+                                <a class="page-link" href="/Student/HistoryLeave.jsp?page=<c:out value="${currentPage+1}"/>">Next</a>
                             </li>
                         </ul>
                     </nav>

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : ListStudent
-    Created on : 24 Jul 2022, 4:42:00 am
+    Document   : ListRoom
+    Created on : 21 Jul 2022, 10:11:17 am
     Author     : black
 --%>
 
@@ -38,12 +38,12 @@
         <div class="container-xxl bd-gutter bd-layout">
             <%@include file="/Staff/Sidebar.jsp" %>
             <main class="bd-main order-1">
-                <h3 class="mt-3">LIST STUDENT</h3>
+                <h3 class="mt-3">LEAVE	 ROOM</h3>
                 <div class="bd-content ps-lg-2">
                     <%@include file="/WEB-INF/jspf/Connection.jspf" %>
 
                     <sql:query dataSource = "${db}" var = "totalQuery">
-                        SELECT count(*) as total FROM `USER` WHERE role="Student";
+                        SELECT COUNT(*) as total FROM `LEAVE`;
                     </sql:query>
                     <c:set var="total" value="${totalQuery.rows[0].total}"/>
                     <c:set var="test" value="test1"/>
@@ -53,24 +53,30 @@
                         int maxPage = (int) Math.ceil((double) total / 10);
                     %>
                     <sql:query dataSource = "${db}" var = "result">
-                        SELECT * FROM `USER` WHERE role="Student";
+                        SELECT `LEAVE`.id,description,approval,`LEAVE`.dateIn,`LEAVE`.dateOut,name FROM `LEAVE`,USER,OCCUPY WHERE `LEAVE`.dateOut>='2022-1-1' AND USER.id=OCCUPY.userID AND OCCUPY.id=`LEAVE`.occupyID;
                     </sql:query>
                         <table id="tab" hidden class="table " >
                         <thead>
                             <tr>
-                                <th scope="col">Student ID</th>
+                                <th scope="col">ID</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Email</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Approval</th>
+                                <th scope="col">Date Out</th>
+                                <th scope="col">Date In</th>
                                 <th scope="col" ></th>
                             </tr>
                         </thead>
                         <c:forEach var = "row" items = "${result.rows}">
                             <tr>
-                                <td><c:out value = "${row.id}"/></td>
+                                <th scope="row"><c:out value = "${row.id}"/></th>
                                 <td><c:out value = "${row.name}"/></td>
-                                <td><c:out value = "${row.email}"/></td>
-                                <td><div class="btn-group d-flex" role="group" >
-                                        <a role='button' href='/Staff/InformationStudent.jsp?id=${row.id }' class='btn btn-success '>Information</a>
+                                <td><c:out value = "${row.description}"/></td>
+                                <td><c:out value = "${row.approval}"/></td>
+                                <td><c:out value = "${row.dateOut}"/></td>
+                                <td><c:out value = "${row.dateIn}"/></td>
+                                <td><div class="btn-group" role="group" >
+                                        <a href="/Staff/InformationLeave.jsp?id=${row.id}" role="button" class="btn btn-primary">View</a>
                                     </div></td>
                             </tr>   
                         </c:forEach>
@@ -83,8 +89,10 @@
                                 <th scope="col">Resident</th>-->
                                 <th scope="col"><input class="form-control" type="text"  /></th>
                                 <th scope="col"><input class="form-control" type="text"  /></th>
+                                <th scope="col"><input class="form-control" type="text"  /></th>
                                 <th scope="col"><input class="form-control" type="text"   /></th>
                                 <th scope="col"><input class="form-control" type="text"  /></th>
+                                <th scope="col"><input class="form-control" type="text"   /></th>
                                 
                             </tr>
                         </tfoot>
@@ -105,7 +113,7 @@
 
                 // DataTable
                 var table = $('#tab').DataTable({
-                    "lengthMenu": [ 5,10, 25, 50, 75, 100 ],
+                	"lengthMenu": [ 5,10, 25, 50, 75, 100 ],
                     initComplete: function () {
                         // Apply the search
                         this.api()
@@ -123,8 +131,8 @@
                 });
                 $("#tab").removeAttr("hidden");
             });
-            $("#btnStudent").attr("aria-expanded", "true");
-            $("#student-collapse").addClass("show");
+            $("#btnLeave").attr("aria-expanded", "true");
+            $("#leave-collapse").addClass("show");
         </script>
     </body>
 </html>

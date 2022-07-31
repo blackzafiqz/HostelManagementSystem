@@ -2,22 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.hotelmanagementsystem.controller;
+package com.hostelmanagementsystem.controller;
 
 import com.hostelmanagementsystem.model.User;
-import com.hotelmanagementsystem.dao.UserDAO;
+import com.hostelmanagementsystem.dao.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
  * @author black
  */
-public class UserServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +37,10 @@ public class UserServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UserServlet</title>");
+            out.println("<title>Servlet LoginServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UserServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -56,21 +57,9 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try ( PrintWriter out = response.getWriter()) {
-            if (request.getParameter("query")!=null) {
-                var query =request.getParameter("query");
-                if(query.equals("name"))
-                {
-                    var id=Integer.parseInt(request.getParameter("id"));
-                    
-                    var user = new UserDAO().Read(id);
-                    if(user!=null)
-                        out.println(user.getName());
-                    else
-                        out.print("");
-                }
-            }
-        }
+        //processRequest(request, response);
+        request.getSession().invalidate();
+        response.sendRedirect("/Login.jsp?signout=true");
     }
 
     /**
@@ -84,22 +73,26 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        var submit = request.getParameter("submit");
 
-        if (submit.equals("update")) {
-            var id = Integer.parseInt(request.getParameter("id"));
-            var email = request.getParameter("email");
-            var password = request.getParameter("password");
-            try ( PrintWriter out = response.getWriter()) {
-                var user = new User();
-                user.setEmail(email);
-                user.setId(id);
-                user.setPassword(password);
-                new UserDAO().Update(user);
-                out.print("<p id='replace' style=\"color:green\">Sucessful</p>");
+        User user = new User();
+        user.setEmail(request.getParameter("email"));
+        user.setPassword(request.getParameter("password"));
+
+        User auth = new UserDAO().Read(user);
+        if (auth != null) {
+            if (auth.getPassword().equals(user.getPassword())) {
+                HttpSession session = request.getSession();
+                session.setAttribute("user", auth);
+                if (auth.getRole().equals("Student")) {
+                    request.getRequestDispatcher("/Student/Student.jsp").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("/Staff/Staff.jsp").forward(request, response);
+                }
+                return;
             }
-
         }
+        response.sendRedirect("/Login.jsp?invalid=true");
+
     }
 
     /**

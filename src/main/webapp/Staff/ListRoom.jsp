@@ -79,7 +79,7 @@
                                 <td><div class="btn-group" role="group" >
                                         <a href="/Staff/HistoryRoom.jsp?id=${row.id}" role="button" class="btn btn-primary">View</a>
                                 <c:if test='${row.total!="4"}'>
-                                    <c:out escapeXml="false" value = "<a role=\"button\" href=\"/Staff/RegisterRoom.jsp?number=${row.number}&level=${row.level}&block=${row.block}\" class='btn btn-success'>Register</a>"/>
+                                    <c:out escapeXml="false" value = "<a role='button' href='/Staff/RegisterRoom.jsp?number=${row.number}&level=${row.level}&block=${row.block}' class='btn btn-success'>Register</a>"/>
                                 </c:if>
                                     </div></td>
                             </tr>   

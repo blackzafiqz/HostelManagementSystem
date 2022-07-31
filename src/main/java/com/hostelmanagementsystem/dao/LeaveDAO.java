@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.hotelmanagementsystem.dao;
+package com.hostelmanagementsystem.dao;
 
 import com.hostelmanagementsystem.model.Leave;
 import com.hostelmanagementsystem.model.Occupy;
 import com.hostelmanagementsystem.model.User;
-import com.hotelmanagementsystem.util.DBConnection;
+import com.hostelmanagementsystem.util.DBConnection;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -39,7 +39,7 @@ public class LeaveDAO {
                 occupy = o;
             }
         }
-        var sql = "insert into `LEAVE`(description,dateOut,dateIn,occupyID) values(?,?,?,?)";
+        var sql = "insert into `LEAVE`(description,dateOut,dateIn,occupyID,approval) values(?,?,?,?,\"Pending\")";
 
         PreparedStatement ps;
         try {
@@ -99,6 +99,7 @@ public class LeaveDAO {
                 leave.setDateOut(rs.getDate("dateOut"));
                 leave.setDateIn(rs.getDate("dateIn"));
                 leave.setId(rs.getInt("id"));
+                leave.setOccupyId(rs.getInt("occupyID"));
                 return leave;
             }
         } catch (SQLException ex) {
@@ -110,15 +111,16 @@ public class LeaveDAO {
     }
 
     public void Update(Leave leave) {
-        String sql = "UPDATE `LEAVE` SET description=?, approval=?, dateOut=?, dateIn=? WHERE id=?";
+        String sql = "UPDATE `LEAVE` SET description=?, approval=?,dateIn=?,dateOut=? WHERE id=?";
 
         PreparedStatement ps;
         try {
             ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, leave.getDescription());
             ps.setString(2, leave.getApproval());
-            ps.setDate(3, leave.getDateOut());
-            ps.setDate(4, leave.getDateIn());
+            ps.setDate(3, leave.getDateIn());
+            ps.setDate(4, leave.getDateOut());
+            ps.setInt(5, leave.getId());
             ps.executeUpdate();
         } catch (Exception ex) {
             System.out.println(ex);
