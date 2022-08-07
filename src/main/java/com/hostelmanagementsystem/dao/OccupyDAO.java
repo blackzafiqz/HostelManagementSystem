@@ -73,7 +73,7 @@ public class OccupyDAO {
     }
     public int Create(User user, Room room) {
 
-        for (var r : user.getName().contains("BINTI") ? new RoomDAO().ReadAvailableFemale() : new RoomDAO().ReadAvailableMale()) {
+        for (var r :new RoomDAO().ReadAvailable()) {
             if (r.getBlock().equals(room.getBlock()) && r.getLevel() == room.getLevel() && r.getNumber() == room.getNumber()) {
                 String sql = "INSERT INTO OCCUPY(userID,roomID,dateIn,dateOut) values(?,?,?,?)";
 
