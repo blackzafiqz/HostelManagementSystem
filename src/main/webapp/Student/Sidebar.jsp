@@ -13,9 +13,9 @@
                 </button>
                 <div class="collapse" id="room-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="/Student/ListRoom.jsp" class="link-dark d-inline-flex text-decoration-none rounded">List</a></li>
-                        <li><a href="/Student/RegisterRoom.jsp" class="link-dark d-inline-flex text-decoration-none rounded">Register</a></li>
-                        <li><a href="/Student/HistoryRoom.jsp" class="link-dark d-inline-flex text-decoration-none rounded">History</a></li>
+                        <li><a href="<% out.print(request.getContextPath());%>/Student/ListRoom.jsp" class="link-dark d-inline-flex text-decoration-none rounded">List</a></li>
+                        <li><a href="<% out.print(request.getContextPath());%>/Student/RegisterRoom.jsp" class="link-dark d-inline-flex text-decoration-none rounded">Register</a></li>
+                        <li><a href="<% out.print(request.getContextPath());%>/Student/HistoryRoom.jsp" class="link-dark d-inline-flex text-decoration-none rounded">History</a></li>
                     </ul>
                 </div>
             </li>
@@ -25,8 +25,8 @@
                 </button>
                 <div class="collapse" id="leave-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="/Student/ApplyLeave.jsp" class="link-dark d-inline-flex text-decoration-none rounded">Apply</a></li>
-                        <li><a href="/Student/HistoryLeave.jsp" class="link-dark d-inline-flex text-decoration-none rounded">History</a></li>
+                        <li><a href="<% out.print(request.getContextPath());%>/Student/ApplyLeave.jsp" class="link-dark d-inline-flex text-decoration-none rounded">Apply</a></li>
+                        <li><a href="<% out.print(request.getContextPath());%>/Student/HistoryLeave.jsp" class="link-dark d-inline-flex text-decoration-none rounded">History</a></li>
                     </ul>
                 </div>
             </li>
@@ -38,7 +38,7 @@
                 </button>
                 <div class="collapse" id="account-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="/Student/Settings.jsp" class="link-dark d-inline-flex text-decoration-none rounded">Settings</a></li>
+                        <li><a href="<% out.print(request.getContextPath());%>/Student/Settings.jsp" class="link-dark d-inline-flex text-decoration-none rounded">Settings</a></li>
                         <li><a href="/LoginServlet" class="link-dark d-inline-flex text-decoration-none rounded">Sign out</a></li>
                     </ul>
                 </div>

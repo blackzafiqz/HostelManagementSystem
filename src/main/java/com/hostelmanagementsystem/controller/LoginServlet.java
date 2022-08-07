@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         request.getSession().invalidate();
-        response.sendRedirect("/Login.jsp?signout=true");
+        response.sendRedirect(request.getContextPath() + "/Login.jsp?signout=true");
     }
 
     /**
@@ -84,14 +84,14 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", auth);
                 if (auth.getRole().equals("Student")) {
-                    request.getRequestDispatcher("/Student/Student.jsp").forward(request, response);
+                    request.getRequestDispatcher(request.getContextPath() + "/Student/Student.jsp").forward(request, response);
                 } else {
-                    request.getRequestDispatcher("/Staff/Staff.jsp").forward(request, response);
+                    request.getRequestDispatcher(request.getContextPath() + "/Staff/Staff.jsp").forward(request, response);
                 }
                 return;
             }
         }
-        response.sendRedirect("/Login.jsp?invalid=true");
+        response.sendRedirect(request.getContextPath() + "/Login.jsp?invalid=true");
 
     }
 

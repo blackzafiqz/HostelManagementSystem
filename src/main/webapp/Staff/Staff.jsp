@@ -11,7 +11,7 @@
     User user = (User) request.getSession().getAttribute("user");
     
     if (user == null) {
-        response.sendRedirect("/Login.jsp");
+        response.sendRedirect(request.getContextPath() + "/Login.jsp");
         return;
     }
 %>
@@ -32,7 +32,7 @@
             </nav>
         </header>
         <div class="container-xxl bd-gutter bd-layout">
-            <%@include file="/Staff/Sidebar.jsp" %>
+            <%@include file= "/Staff/Sidebar.jsp" %>
             <main class="bd-main order-1">
                 <div class="bd-content ps-lg-2">
                     <p>Welcome <%=user.getName()%>  </p>

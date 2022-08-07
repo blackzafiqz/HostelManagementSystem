@@ -9,12 +9,12 @@
 <%
     User user = (User) request.getSession().getAttribute("user");
     if (user == null) {
-        response.sendRedirect("/Login.jsp");
+        response.sendRedirect(request.request.getContextPath() + "/Login.jsp");
         return;
     } else if (user.getRole().equals("Student")) {
-        request.getRequestDispatcher("/Student/Student.jsp").forward(request, response);
+        request.getRequestDispatcher(request.request.getContextPath() + "/Student/Student.jsp").forward(request, response);
     } else {
-        request.getRequestDispatcher("/Staff/Staff.jsp").forward(request, response);
+        request.getRequestDispatcher(request.request.getContextPath() + "/Staff/Staff.jsp").forward(request, response);
     }
 %>
 <!DOCTYPE html>

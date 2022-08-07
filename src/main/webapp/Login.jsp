@@ -87,7 +87,7 @@
     <body class="text-center">
 
         <main class="form-signin w-100 m-auto">
-            <form name="form" method="post" action="/LoginServlet" onsubmit="return validate()">>
+            <form name="form" method="post" action="<% out.print(request.getContextPath());%>/LoginServlet" onsubmit="return validate()">>
                 <img class="mb-4" src="images/LogoUiTM.png" alt="" width="300" height="100">
                 <h1 class="h3 mb-3 fw-normal">Sign in</h1>
                 <%

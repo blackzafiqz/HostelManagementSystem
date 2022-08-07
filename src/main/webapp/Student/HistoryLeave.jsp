@@ -14,7 +14,7 @@
     User user = (User) request.getSession().getAttribute("user");
 
     if (user == null) {
-        response.sendRedirect("/Login.jsp");
+        response.sendRedirect(request.getContextPath() + "/Login.jsp");
         return;
     }
     int pg = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
@@ -37,7 +37,7 @@
             </nav>
         </header>
         <div class="container-xxl bd-gutter bd-layout">
-            <%@include file="/Student/Sidebar.jsp" %>
+            <%@include file= "/Student/Sidebar.jsp" %>
             <main class="bd-main order-1">
                 <div class="bd-content ps-lg-2">
                     <h3 class="mt-3">LEAVE HISTORY</h3>
@@ -108,13 +108,13 @@
                                         "currentPage", pg);
                             %>
                             <li class="page-item <%= pg == 1 ? "disabled" : ""%>">
-                                <a class="page-link" href="/Student/HistoryLeave.jsp?page=<c:out value="${currentPage-1}"/>">Previous</a>
+                                <a class="page-link" href="<% out.print(request.getContextPath());%>/Student/HistoryLeave.jsp?page=<c:out value="${currentPage-1}"/>">Previous</a>
                             </li>
                             <c:forEach var="pg" items="${pages}">
-                                <li class="page-item <c:if test="${currentPage==pg}"><c:out value = "disabled"/></c:if>"><a class="page-link" href="/Student/HistoryLeave.jsp?page=<c:out value="${pg}"/>"><c:out value="${pg}"/></a></li>
+                                <li class="page-item <c:if test="${currentPage==pg}"><c:out value = "disabled"/></c:if>"><a class="page-link" href="<% out.print(request.getContextPath());%>/Student/HistoryLeave.jsp?page=<c:out value="${pg}"/>"><c:out value="${pg}"/></a></li>
                                 </c:forEach>
                             <li class="page-item <%= pg == maxPage || maxPage==0 ? "disabled" : ""%>">
-                                <a class="page-link" href="/Student/HistoryLeave.jsp?page=<c:out value="${currentPage+1}"/>">Next</a>
+                                <a class="page-link" href="<% out.print(request.getContextPath());%>/Student/HistoryLeave.jsp?page=<c:out value="${currentPage+1}"/>">Next</a>
                             </li>
                         </ul>
                     </nav>
