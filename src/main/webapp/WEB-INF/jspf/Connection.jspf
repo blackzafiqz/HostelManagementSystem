@@ -2,5 +2,5 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix = "sql"%>
 <sql:setDataSource var = "db" driver = "com.mysql.cj.jdbc.Driver"
-                   url = "jdbc:mysql://blackzafiqz.com/hostel?useSSL=false"
-                   user = "outsider"  password = "nopassword"/>
+                   url = "jdbc:mysql://replace/hostel?useSSL=false"
+                   user = "replace"  password = "replace"/>

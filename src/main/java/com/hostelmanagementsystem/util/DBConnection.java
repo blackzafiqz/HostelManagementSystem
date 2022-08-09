@@ -31,7 +31,7 @@ public class DBConnection {
         }
         
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://blackzafiqz.com/hostel?useSSL=false","outsider","nopassword");
+            conn = DriverManager.getConnection("jdbc:mysql://replace/hostel?useSSL=false","replace","replace");
             System.out.println("Printing Connection Object " + conn);
         } catch (SQLException ex) {
             // handle any errors
